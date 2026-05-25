@@ -580,7 +580,7 @@ function FinishModal({ sbNo, trucksForSb, grossWeight, declaredPackages, existin
                 { label: `Assigned: ${totalPackages}`, color: isExact ? C.green : isOver ? C.red : C.blue, bg: isExact ? C.greenSoft : isOver ? C.redSoft : C.blueSoft, border: isExact ? "#bbf7d0" : isOver ? "#fecaca" : "#bfdbfe" },
                 { label: `Declared: ${declaredPackages}`, color: C.muted, bg: "#f8fafc", border: C.border },
                 { label: `Remaining: ${remaining}`, color: remaining < 0 ? C.red : remaining === 0 ? C.green : C.amber, bg: "#f8fafc", border: C.border },
-                { label: `Gross Wt: ${Number(grossWeight || 0).toFixed(2)} KG`, color: C.muted, bg: "#f8fafc", border: C.border },
+                { label: `Gross Wt: ${Number(grossWeight || 0).toFixed(2)} Tons`, color: C.muted, bg: "#f8fafc", border: C.border },
               ].map((chip) => (
                 <div key={chip.label} style={{ background: chip.bg, border: `1px solid ${chip.border}`, borderRadius: 8, padding: "5px 11px", fontSize: 12, fontWeight: 700, color: chip.color }}>{chip.label}</div>
               ))}
@@ -606,7 +606,7 @@ function FinishModal({ sbNo, trucksForSb, grossWeight, declaredPackages, existin
                               onChange={(e) => { setGridPkgs((p) => ({ ...p, [row.ID]: Math.max(0, Number(e.target.value) || 0) })); setError(""); }}
                               style={{ width: "100%", padding: "8px 10px", borderRadius: 7, border: `1.5px solid ${C.border}`, fontSize: 14, fontWeight: 700, textAlign: "center" }}
                             />
-                            <div style={{ fontWeight: 700, color: C.green, textAlign: "right", fontSize: 13 }}>{weight} KG</div>
+                            <div style={{ fontWeight: 700, color: C.green, textAlign: "right", fontSize: 13 }}>{weight} Tons</div>
                           </div>
                         );
                       })}
@@ -1161,7 +1161,7 @@ const filteredGateData =
                                 {finalSubmitted ? "🔒 Final Submitted" : isFinished ? "✅ Finished" : isLive ? "🔴 Live" : "⏳ Started"}
                               </Badge>
                               <Badge bg={C.navyMid}>{sbTrucks.length} 🚛</Badge>
-                              <Badge bg={C.greenSoft} fg={C.green}>{calcWeight} KG</Badge>
+                              <Badge bg={C.greenSoft} fg={C.green}>{calcWeight} Tons</Badge>
                             </div>
                             <div style={{ display: "flex", gap: 7, flexWrap: "wrap", alignItems: "center" }}>
                               {!isFinished && !isLive && hasAnyGrid && !finalSubmitted && (
